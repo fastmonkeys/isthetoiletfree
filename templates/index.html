@@ -14,11 +14,13 @@ text-align: center;
 <h1 id="hasFree">{{ has_free_toilet }}</h1>
 <script>
 var el = document.getElementById("hasFree");
+var page_title = document.title;
 var ws = new WebSocket(location.origin.replace(/^http/, "ws") +
                        "/hasfreesocket");
 
 ws.onmessage = function(event) {
   el.innerHTML = JSON.parse(event.data).hasFree;
+  page_title = JSON.parse(event.data).hasFree;
 };
 </script>
 </body>
